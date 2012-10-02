@@ -11,6 +11,7 @@ Style
 @import "mixins-styles";
 /*Variaveis*/
 $white:#fff;
+$input-shadow:1px 1px 2px #e7e7e7 inset;
 
 .optimus{
 	font: normal 10px/1.1em Arial,Sans-Serif;
@@ -26,9 +27,9 @@ $white:#fff;
 		@include label(lbl);
 	}
 	.optimus-txt {
-	    @include input;
+	    @include input(normal);
 	    /*shadow*/
-	    box-shadow: 1px 1px 2px #e7e7e7 inset;
+	    box-shadow: $input-shadow;
 	    /*corner*/
 	    @include rounded-border(4)
 	}
@@ -36,17 +37,25 @@ $white:#fff;
 	&[type="text"], &[type="password"], &[type="file"] {
 			@include input;
 			/*shadow*/
-			box-shadow: 1px 1px 2px #e7e7e7 inset;
+			box-shadow: $input-shadow;
 			/*corner*/
 			@include rounded-border(4)
 		}
 	}
 	textarea, select {
-		@include input;
+		@include input(normal);
 		/*shadow*/
-		box-shadow: 1px 1px 2px #e7e7e7 inset;
+		box-shadow: $input-shadow;
 		/*corner*/
 		@include rounded-border(4)
+	}
+	.optimus-txt:hover,textarea:hover, select:hover {
+		@include input(hover);
+	}
+	input {
+		&[type="text"]:hover, &[type="password"]:hover, &[type="file"]:hover {
+			@include input(hover);
+		}
 	}
 }
 /*out of box style*/
